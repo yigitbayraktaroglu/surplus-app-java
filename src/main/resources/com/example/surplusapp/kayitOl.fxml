@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.surplusapp.KayitOlController">
+   <children>
+      <TextField fx:id="isim" layoutX="225.0" layoutY="112.0" promptText="İsim Giriniz:" />
+      <TextField fx:id="mail" layoutX="225.0" layoutY="149.0" promptText="Mail Giriniz:" />
+      <Button fx:id="kayitOl" layoutX="317.0" layoutY="231.0" mnemonicParsing="false" onAction="#kayitOl" text="Kayıt Ol" />
+      <Button fx:id="geriDon" layoutX="522.0" layoutY="14.0" mnemonicParsing="false" onAction="#geriDon" text="Geri Don" />
+      <Label layoutX="23.0" layoutY="18.0" text="SURPLUS">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="pass" layoutX="225.0" layoutY="187.0" promptText="Şifre Giriniz:" />
+      <Label fx:id="feedback" layoutX="186.0" layoutY="85.0" prefHeight="18.0" prefWidth="226.0" />
+   </children>
+</AnchorPane>

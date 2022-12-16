@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.surplusapp.girisController">
+   <children>
+      <Button fx:id="giris" layoutX="313.0" layoutY="271.0" mnemonicParsing="false" onAction="#girisYap" text="Giris Yap" />
+      <Button fx:id="kayıtOl" layoutX="227.0" layoutY="271.0" mnemonicParsing="false" onAction="#goKayitOl" text="Kayıt Ol" />
+      <TextField fx:id="mail" layoutX="226.0" layoutY="155.0" promptText="Mail Giriniz:" />
+      <Label layoutX="202.0" layoutY="65.0" text="SURPLUS">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="427.0" layoutY="339.0" text="170420050 Yiğit Bayraktaroğlu" />
+      <Label layoutX="422.0" layoutY="357.0" text="171420008 Hamza Can Korkmaz" />
+      <PasswordField fx:id="pass" layoutX="225.0" layoutY="200.0" promptText="Şifre Giriniz:" />
+      <Label fx:id="feedback" layoutX="240.0" layoutY="240.0" prefHeight="18.0" prefWidth="121.0" textAlignment="CENTER" />
+   </children>
+</AnchorPane>
