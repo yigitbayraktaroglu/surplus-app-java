@@ -12,7 +12,7 @@
       <Label layoutX="673.0" layoutY="82.0" text="Tüm Şarkılar" />
       <Label layoutX="325.0" layoutY="82.0" text="Label" />
       <Button fx:id="yeniPlaylist" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="154.0" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Yeni Playlist" />
-      <Button fx:id="sarkiEkle" layoutX="638.0" layoutY="521.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Şarkı Ekle" />
+      <Button fx:id="sarkiEkle" layoutX="638.0" layoutY="521.0" mnemonicParsing="false" onAction="#sarkiEkle" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Şarkı Ekle" />
       <Button fx:id="sarkiSil" layoutX="288.0" layoutY="521.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Şarkı Sil" />
       <Button fx:id="playlistGoruntule" layoutX="14.0" layoutY="521.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Playlist Görüntüle" />
       <Button fx:id="takipEtikllerin" layoutX="218.0" layoutY="13.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="171.0" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Takip Ettiklerin" />

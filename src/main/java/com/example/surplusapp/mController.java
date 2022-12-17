@@ -26,6 +26,7 @@ import static com.example.surplusapp.dbConn.Connect;
 
 public class mController implements Initializable  {
     public  User currUser=new User();
+
     ObservableList<song> observableList= FXCollections.observableArrayList();
     ObservableList<playlist> playlistObservableList= FXCollections.observableArrayList();
     @FXML
@@ -65,8 +66,9 @@ public class mController implements Initializable  {
         catCol.setCellValueFactory(new PropertyValueFactory<>("categoryName"));
         playlistNameCol.setCellValueFactory(new PropertyValueFactory<>("playlistName"));
         getallSongs();
-        System.out.println("31");
         songTableView.setItems(observableList);
+        playlistTableview.setItems(playlistObservableList);
+
     }
 
     public  void setUser(User user) {
@@ -74,9 +76,7 @@ public class mController implements Initializable  {
         currUser.setUserMail(user.getUserMail());
         currUser.setUserName(user.getUserMail());
         currUser.setUserPass(user.getUserPass());
-        getUserPlaylist();
-
-        playlistTableview.setItems(playlistObservableList);
+        getUserPlaylist(user);
     }
 
     public void getallSongs(){
@@ -97,9 +97,8 @@ public class mController implements Initializable  {
             e.printStackTrace();
         }
     }
-    public void getUserPlaylist(){
-        String id=Integer.toString(currUser.getUserID());
-        System.out.println(id);
+    public void getUserPlaylist(User user){
+        String id=Integer.toString(user.getUserID());
         String sql = "SELECT * FROM playlists WHERE userID="+id;
         try (Connection conn = Connect();
              PreparedStatement pstmt  = conn.prepareStatement(sql);
@@ -114,11 +113,32 @@ public class mController implements Initializable  {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        playlistTableview.setItems(playlistObservableList);
+
+
 
     }
-    public void getPlaylistSong(){}
+    public void getPlaylistSong(){
 
+    }
+
+    public void sarkiEkle(){
+        ObservableList<song> ekle;
+        ObservableList<playlist> playlists;
+        playlists=playlistTableview.getSelectionModel().getSelectedItems();
+        int plid=playlists.get(0).getPlaylistID();
+        ekle=songTableView.getSelectionModel().getSelectedItems();
+        int songID=ekle.get(0).getSongID();
+        String sql = "INSERT INTO playlistsongs (playlistID,songID)" +
+                "VALUES('"+plid+"','"+songID+"')";
+        try (Connection conn = Connect();
+             PreparedStatement pstmt  = conn.prepareStatement(sql);
+        ){
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
 
@@ -128,7 +148,6 @@ public class mController implements Initializable  {
 
     @FXML
     public void cikis() throws IOException {
-        playlistObservableList.clear();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("giris.fxml"));
         root.getChildren().setAll(pane);
     }
