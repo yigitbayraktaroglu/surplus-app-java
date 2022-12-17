@@ -1,37 +1,44 @@
 package com.example.surplusapp;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class playlist {
-    private int playlistID;
-    private int userID;
-    private String playlistName;
+    private SimpleIntegerProperty playlistID;
+    private SimpleIntegerProperty userID;
+    private SimpleStringProperty playlistName;
 
     public playlist(int playlistID, int userID, String playlistName) {
-        this.playlistID = playlistID;
-        this.userID = userID;
-        this.playlistName = playlistName;
+        this.playlistID = new SimpleIntegerProperty(playlistID);
+        this.userID = new SimpleIntegerProperty(userID);
+        this.playlistName = new SimpleStringProperty(playlistName);
+    }
+
+    public playlist() {
+
     }
 
     public int getPlaylistID() {
-        return playlistID;
+        return playlistID.get();
     }
 
     public void setPlaylistID(int playlistID) {
-        this.playlistID = playlistID;
+        this.playlistID = new SimpleIntegerProperty(playlistID);
     }
 
     public int getUserID() {
-        return userID;
+        return userID.get();
     }
 
     public void setUserID(int userID) {
-        this.userID = userID;
+        this.userID =  new SimpleIntegerProperty(userID);
     }
 
     public String getPlaylistName() {
-        return playlistName;
+        return playlistName.get();
     }
 
     public void setPlaylistName(String playlistName) {
-        this.playlistName = playlistName;
+        this.playlistName = new SimpleStringProperty(playlistName);
     }
 }

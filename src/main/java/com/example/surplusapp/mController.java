@@ -25,14 +25,16 @@ import java.util.ResourceBundle;
 import static com.example.surplusapp.dbConn.Connect;
 
 public class mController implements Initializable  {
-    public  User currUser;
-
+    public  User currUser=new User();
+    ObservableList<song> observableList= FXCollections.observableArrayList();
+    ObservableList<playlist> playlistObservableList= FXCollections.observableArrayList();
     @FXML
     AnchorPane root;
     @FXML
     Button cikis;
     @FXML
     Button sarkiSil;
+
     @FXML
     Button sarkiEkle;
     @FXML
@@ -42,35 +44,41 @@ public class mController implements Initializable  {
     @FXML
     public Button takipEtikllerin;
     @FXML
-    public TableView<song> songTableView;
+    public TableView<playlist> playlistTableview=new TableView<>();
     @FXML
-    public TableColumn<song,String> adCol;
+    public TableColumn<playlist,String> playlistNameCol=new TableColumn<>();
     @FXML
-    public TableColumn <song,String>artistCol;
+    public TableView<song> songTableView=new TableView<>();
     @FXML
-    public TableColumn<song,String> lenCol;
+    public TableColumn<song,String> adCol=new TableColumn<>();
     @FXML
-    public TableColumn<song,String>catCol;
-
-
+    public TableColumn <song,String>artistCol=new TableColumn<>();
+    @FXML
+    public TableColumn<song,String> lenCol=new TableColumn<>();
+    @FXML
+    public TableColumn<song,String>catCol=new TableColumn<>();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         adCol.setCellValueFactory(new PropertyValueFactory<>("songName"));
         artistCol.setCellValueFactory(new PropertyValueFactory<>("artistName"));
         lenCol.setCellValueFactory(new PropertyValueFactory<>("length"));
         catCol.setCellValueFactory(new PropertyValueFactory<>("categoryName"));
+        playlistNameCol.setCellValueFactory(new PropertyValueFactory<>("playlistName"));
+        getallSongs();
+        System.out.println("31");
         songTableView.setItems(observableList);
     }
-    ObservableList<song> observableList= FXCollections.observableArrayList(
-            new song(1,"a","b","c","f")
-    );
-
 
     public  void setUser(User user) {
-        currUser=user;
-        System.out.println(currUser.getUserName());
+        currUser.setUserID(user.getUserID());
+        currUser.setUserMail(user.getUserMail());
+        currUser.setUserName(user.getUserMail());
+        currUser.setUserPass(user.getUserPass());
+        getUserPlaylist();
+
+        playlistTableview.setItems(playlistObservableList);
     }
-    @FXML
+
     public void getallSongs(){
         String sql = "SELECT songs.songID, artistName, categories.categoryName,songName,length FROM songs INNER JOIN categories ON songs.categoryID = categories.categoryID";
         try (Connection conn = Connect();
@@ -90,20 +98,37 @@ public class mController implements Initializable  {
         }
     }
     public void getUserPlaylist(){
-        String sql = "SELECT * FROM playlists WHERE userID="+currUser.getUserID();
+        String id=Integer.toString(currUser.getUserID());
+        System.out.println(id);
+        String sql = "SELECT * FROM playlists WHERE userID="+id;
         try (Connection conn = Connect();
              PreparedStatement pstmt  = conn.prepareStatement(sql);
              ResultSet rs  = pstmt.executeQuery()){
             while (rs.next()){
-
+                playlist playlist=new playlist();
+                playlist.setUserID(rs.getInt("userID"));
+                playlist.setPlaylistID(rs.getInt("playlistID"));
+                playlist.setPlaylistName(rs.getString("playlistName"));
+                playlistObservableList.add(playlist);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        playlistTableview.setItems(playlistObservableList);
 
     }
+    public void getPlaylistSong(){}
+
+
+
+
+
+
+
+
     @FXML
     public void cikis() throws IOException {
+        playlistObservableList.clear();
         AnchorPane pane = FXMLLoader.load(getClass().getResource("giris.fxml"));
         root.getChildren().setAll(pane);
     }

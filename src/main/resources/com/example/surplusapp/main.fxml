@@ -2,30 +2,39 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="root" prefHeight="500.0" prefWidth="800.0" stylesheets="@../../../../java/com/example/surplusapp/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.surplusapp.mController">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="900.0" stylesheets="@../../../../java/com/example/surplusapp/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.surplusapp.mController">
    <children>
-      <Button fx:id="cikis" layoutX="674.0" layoutY="13.0" mnemonicParsing="false" onAction="#cikis" styleClass="cikis" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Çıkış Yap" />
-      <ListView layoutX="14.0" layoutY="87.0" prefHeight="350.0" prefWidth="154.0" />
-      <ListView layoutX="203.0" layoutY="87.0" prefHeight="350.0" prefWidth="169.0" />
-      <Label layoutX="559.0" layoutY="64.0" text="Tüm Şarkılar" />
-      <Label layoutX="274.0" layoutY="64.0" text="Label" />
-      <Label layoutX="37.0" layoutY="64.0" text="Playlistlerim" />
-      <Button fx:id="yeniPlaylist" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#getallSongs" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Yeni Playlist" />
-      <Button fx:id="sarkiEkle" layoutX="536.0" layoutY="447.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Şarkı Ekle" />
-      <Button fx:id="sarkiSil" layoutX="232.0" layoutY="447.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Şarkı Sil" />
-      <Button fx:id="playlistGoruntule" layoutX="14.0" layoutY="447.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Playlist Görüntüle" />
-      <Button fx:id="takipEtikllerin" layoutX="177.0" layoutY="13.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Takip Ettiklerin" />
-      <TableView fx:id="songTableView" layoutX="400.0" layoutY="87.0" prefHeight="350.0" prefWidth="383.0">
+      <Button fx:id="cikis" layoutX="776.0" layoutY="13.0" mnemonicParsing="false" onAction="#cikis" styleClass="cikis" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Çıkış Yap" />
+      <Label layoutX="673.0" layoutY="82.0" text="Tüm Şarkılar" />
+      <Label layoutX="325.0" layoutY="82.0" text="Label" />
+      <Button fx:id="yeniPlaylist" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="154.0" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Yeni Playlist" />
+      <Button fx:id="sarkiEkle" layoutX="638.0" layoutY="521.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Şarkı Ekle" />
+      <Button fx:id="sarkiSil" layoutX="288.0" layoutY="521.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Şarkı Sil" />
+      <Button fx:id="playlistGoruntule" layoutX="14.0" layoutY="521.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Playlist Görüntüle" />
+      <Button fx:id="takipEtikllerin" layoutX="218.0" layoutY="13.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="171.0" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Takip Ettiklerin" />
+      <TableView fx:id="songTableView" layoutX="502.0" layoutY="106.0" prefHeight="399.0" prefWidth="383.0">
         <columns>
-          <TableColumn fx:id="adCol" prefWidth="106.4000244140625" text="Şarkı Adı" />
-          <TableColumn fx:id="artistCol" prefWidth="92.79998779296875" text="Şarkıcı" />
+          <TableColumn fx:id="adCol" prefWidth="125.5999755859375" text="Şarkı Adı" />
+          <TableColumn fx:id="artistCol" prefWidth="75.199951171875" text="Şarkıcı" />
             <TableColumn fx:id="lenCol" prefWidth="71.20001220703125" text="Uzunluk" />
             <TableColumn fx:id="catCol" prefWidth="114.39990234375" text="Kategorisi" />
+        </columns>
+      </TableView>
+      <TableView fx:id="playlistTableview" layoutX="14.0" layoutY="106.0" prefHeight="399.0" prefWidth="154.0">
+        <columns>
+          <TableColumn fx:id="playlistNameCol" prefWidth="153.60001220703126" text="Playlistlerim" />
+        </columns>
+      </TableView>
+      <TableView layoutX="188.0" layoutY="106.0" prefHeight="399.0" prefWidth="302.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Şarkı Adı" />
+          <TableColumn prefWidth="74.4000244140625" text="Şarkıcı" />
+            <TableColumn prefWidth="76.0" text="Uzunluk" />
+            <TableColumn prefWidth="75.0" text="Kategorisi" />
         </columns>
       </TableView>
    </children>
