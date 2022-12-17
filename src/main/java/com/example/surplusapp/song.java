@@ -2,16 +2,19 @@ package com.example.surplusapp;
 
 public class song {
     private  int songID;
-    private  int categoryID;
+    private  String categoryName;
+    private  String artistName;
     private String songName;
     private String length;
 
-    public song(int songID, int categoryID, String songName, String length) {
+    public song(int songID, String categoryName, String artistName, String songName, String length) {
         this.songID = songID;
-        this.categoryID = categoryID;
+        this.categoryName = categoryName;
+        this.artistName = artistName;
         this.songName = songName;
         this.length = length;
     }
+    public song(){}
 
     public int getSongID() {
         return songID;
@@ -21,12 +24,20 @@ public class song {
         this.songID = songID;
     }
 
-    public int getCategoryID() {
-        return categoryID;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategoryID(int categoryID) {
-        this.categoryID = categoryID;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public void setArtistName(String artistName) {
+        this.artistName = artistName;
     }
 
     public String getSongName() {

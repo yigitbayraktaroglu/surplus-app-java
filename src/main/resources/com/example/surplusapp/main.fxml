@@ -15,7 +15,7 @@
       <Label layoutX="559.0" layoutY="64.0" text="Tüm Şarkılar" />
       <Label layoutX="274.0" layoutY="64.0" text="Label" />
       <Label layoutX="37.0" layoutY="64.0" text="Playlistlerim" />
-      <Button fx:id="yeniPlaylist" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Yeni Playlist" />
+      <Button fx:id="yeniPlaylist" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#getallSongs" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Yeni Playlist" />
       <Button fx:id="sarkiEkle" layoutX="536.0" layoutY="447.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Şarkı Ekle" />
       <Button fx:id="sarkiSil" layoutX="232.0" layoutY="447.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Şarkı Sil" />
       <Button fx:id="playlistGoruntule" layoutX="14.0" layoutY="447.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Playlist Görüntüle" />
