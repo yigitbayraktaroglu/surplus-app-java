@@ -10,11 +10,10 @@
    <children>
       <Button fx:id="cikis" layoutX="776.0" layoutY="13.0" mnemonicParsing="false" onAction="#cikis" styleClass="cikis" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Çıkış Yap" />
       <Label layoutX="673.0" layoutY="82.0" text="Tüm Şarkılar" />
-      <Label layoutX="325.0" layoutY="82.0" text="Label" />
       <Button fx:id="yeniPlaylist" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="154.0" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Yeni Playlist" />
       <Button fx:id="sarkiEkle" layoutX="638.0" layoutY="521.0" mnemonicParsing="false" onAction="#sarkiEkle" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Şarkı Ekle" />
-      <Button fx:id="sarkiSil" layoutX="288.0" layoutY="521.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Şarkı Sil" />
-      <Button fx:id="playlistGoruntule" layoutX="14.0" layoutY="521.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Playlist Görüntüle" />
+      <Button fx:id="sarkiSil" layoutX="288.0" layoutY="521.0" mnemonicParsing="false" onAction="#deletePlaylistSong" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Şarkı Sil" />
+      <Button fx:id="playlistGoruntule" layoutX="14.0" layoutY="521.0" mnemonicParsing="false" onAction="#getPlaylistSong" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Playlist Görüntüle" />
       <Button fx:id="takipEtikllerin" layoutX="218.0" layoutY="13.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="171.0" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Takip Ettiklerin" />
       <TableView fx:id="songTableView" layoutX="502.0" layoutY="106.0" prefHeight="399.0" prefWidth="383.0">
         <columns>
@@ -24,17 +23,18 @@
             <TableColumn fx:id="catCol" prefWidth="114.39990234375" text="Kategorisi" />
         </columns>
       </TableView>
-      <TableView fx:id="playlistTableview" layoutX="14.0" layoutY="106.0" prefHeight="399.0" prefWidth="154.0">
+      <TableView fx:id="plsongTableView" layoutX="188.0" layoutY="106.0" prefHeight="399.0" prefWidth="302.0">
         <columns>
-          <TableColumn fx:id="playlistNameCol" prefWidth="153.60001220703126" text="Playlistlerim" />
+          <TableColumn fx:id="pladCol" prefWidth="75.0" text="Şarkı Adı" />
+          <TableColumn fx:id="plartistCol" prefWidth="74.4000244140625" text="Şarkıcı" />
+            <TableColumn fx:id="pllenCol" prefWidth="76.0" text="Uzunluk" />
+            <TableColumn fx:id="plcatCol" prefWidth="75.0" text="Kategorisi" />
         </columns>
       </TableView>
-      <TableView layoutX="188.0" layoutY="106.0" prefHeight="399.0" prefWidth="302.0">
+      <Label fx:id="lbl" layoutX="221.0" layoutY="82.0" prefHeight="18.0" prefWidth="250.0" text="Label" textAlignment="CENTER" />
+      <TableView fx:id="playlistTableview" layoutX="14.0" layoutY="106.0" prefHeight="399.0" prefWidth="154.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Şarkı Adı" />
-          <TableColumn prefWidth="74.4000244140625" text="Şarkıcı" />
-            <TableColumn prefWidth="76.0" text="Uzunluk" />
-            <TableColumn prefWidth="75.0" text="Kategorisi" />
+          <TableColumn fx:id="playlistNameCol" prefWidth="75.0" text="C1" />
         </columns>
       </TableView>
    </children>
