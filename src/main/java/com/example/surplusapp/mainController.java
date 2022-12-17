@@ -1,15 +1,20 @@
 package com.example.surplusapp;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class mainController implements Initializable {
-
+public class mainController  {
+    public  User currUser;
+    @FXML
+    AnchorPane root;
     @FXML
     Button cikis;
     @FXML
@@ -22,18 +27,18 @@ public class mainController implements Initializable {
     Button yeniPlaylist;
     @FXML
     Button takipEtikllerin;
-    @FXML
-    Label label;
-    public  User currUser;
 
 
     public  void setUser(User user) {
         currUser=user;
-
+        System.out.println(currUser.getUserName());
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        
+    @FXML
+    public void cikis() throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("giris.fxml"));
+        root.getChildren().setAll(pane);
     }
+
+
 }
