@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="root" prefHeight="500.0" prefWidth="800.0" stylesheets="@../../../../java/com/example/surplusapp/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.surplusapp.mainController">
+<AnchorPane fx:id="root" prefHeight="500.0" prefWidth="800.0" stylesheets="@../../../../java/com/example/surplusapp/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.surplusapp.mController">
    <children>
       <Button fx:id="cikis" layoutX="674.0" layoutY="13.0" mnemonicParsing="false" onAction="#cikis" styleClass="cikis" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Çıkış Yap" />
       <ListView layoutX="14.0" layoutY="87.0" prefHeight="350.0" prefWidth="154.0" />
@@ -20,12 +20,12 @@
       <Button fx:id="sarkiSil" layoutX="232.0" layoutY="447.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Şarkı Sil" />
       <Button fx:id="playlistGoruntule" layoutX="14.0" layoutY="447.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Playlist Görüntüle" />
       <Button fx:id="takipEtikllerin" layoutX="177.0" layoutY="13.0" mnemonicParsing="false" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Takip Ettiklerin" />
-      <TableView layoutX="400.0" layoutY="87.0" prefHeight="350.0" prefWidth="383.0">
+      <TableView fx:id="songTableView" layoutX="400.0" layoutY="87.0" prefHeight="350.0" prefWidth="383.0">
         <columns>
-          <TableColumn prefWidth="106.4000244140625" text="Şarkı Adı" />
-          <TableColumn prefWidth="92.79998779296875" text="Şarkıcı" />
-            <TableColumn prefWidth="71.20001220703125" text="Uzunluk" />
-            <TableColumn prefWidth="114.39990234375" text="Kategorisi" />
+          <TableColumn fx:id="adCol" prefWidth="106.4000244140625" text="Şarkı Adı" />
+          <TableColumn fx:id="artistCol" prefWidth="92.79998779296875" text="Şarkıcı" />
+            <TableColumn fx:id="lenCol" prefWidth="71.20001220703125" text="Uzunluk" />
+            <TableColumn fx:id="catCol" prefWidth="114.39990234375" text="Kategorisi" />
         </columns>
       </TableView>
    </children>

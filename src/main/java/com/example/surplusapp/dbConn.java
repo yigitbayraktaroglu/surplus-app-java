@@ -19,31 +19,12 @@ public class dbConn {
             conn=DriverManager.getConnection(url,username,password);
         }
         catch(SQLException e){
-            System.out.println("sorun var");
+            System.out.println("Database baglanamadi.");
         }
         return conn;
 
     }
 
-
-
-    public static User getUser(String mail, String pass) throws SQLException {
-        User user =new User();
-        String sql = "SELECT * FROM users WHERE userMail='"+mail+"'AND userPass='"+pass+"'";
-        try (Connection conn = Connect();
-             PreparedStatement pstmt  = conn.prepareStatement(sql);
-        ResultSet rs  = pstmt.executeQuery()){
-            while (rs.next()){
-                user.setUserID(rs.getInt("userID"));
-                user.setUserMail(rs.getString("userMail"));
-                user.setUserName(rs.getString("userName"));
-                user.setUserPass(rs.getString("userPass"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-        return user;}
 }
 
 

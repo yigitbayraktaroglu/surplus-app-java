@@ -18,7 +18,7 @@ import java.util.Objects;
 
 import static com.example.surplusapp.dbConn.Connect;
 
-public class girisController extends mainController{
+public class girisController extends mController{
     @FXML
     private AnchorPane root;
     @FXML
