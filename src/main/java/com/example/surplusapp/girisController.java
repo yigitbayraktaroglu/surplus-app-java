@@ -60,7 +60,12 @@ public class girisController extends mController{
             AnchorPane pane = FXMLLoader.load(getClass().getResource("main.fxml"));
             root.getChildren().setAll(pane);
 
-        }else{
+        }else if(Objects.equals(userMail, "admin")&& Objects.equals(userPass, "admin")){
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("admin.fxml"));
+            root.getChildren().setAll(pane);
+
+        }
+        else{
             feedback.setText("Tekrar Giriş Yapınız.");
             mail.clear();
             pass.clear();

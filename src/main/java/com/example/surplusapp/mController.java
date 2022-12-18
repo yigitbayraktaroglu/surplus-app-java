@@ -165,7 +165,7 @@ public class mController implements Initializable  {
                 song.setArtistName(rs.getString("artistName"));
                 song.setCategoryName(rs.getString("categoryName"));
                 plSongobservableList.add(song);
-                System.out.println(song.getSongName());
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
