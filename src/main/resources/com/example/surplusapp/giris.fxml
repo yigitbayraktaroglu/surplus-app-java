@@ -7,19 +7,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@../../../../java/com/example/surplusapp/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.surplusapp.girisController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.surplusapp.girisController">
    <children>
-      <Button fx:id="giris" layoutX="406.0" layoutY="300.0" mnemonicParsing="false" onAction="#girisYap" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Giris Yap" />
-      <Button fx:id="kayıtOl" layoutX="286.0" layoutY="300.0" mnemonicParsing="false" onAction="#goKayitOl" styleClass="Button" stylesheets="@../../../../java/com/example/surplusapp/style.css" text="Kayıt Ol" />
-      <TextField fx:id="mail" layoutX="286.0" layoutY="185.0" prefHeight="26.0" prefWidth="226.0" promptText="Mail Giriniz:" stylesheets="@../../../../java/com/example/surplusapp/style.css" />
-      <Label layoutX="300.0" layoutY="95.0" text="SURPLUS">
+      <Button fx:id="giris" layoutX="465.0" layoutY="372.0" mnemonicParsing="false" onAction="#girisYap" text="Giris Yap">
          <font>
-            <Font size="48.0" />
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="kayıtOl" layoutX="308.0" layoutY="372.0" mnemonicParsing="false" onAction="#goKayitOl" text="Kayıt Ol">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <TextField fx:id="mail" layoutX="308.0" layoutY="203.0" prefHeight="35.0" prefWidth="282.0" promptText="Mail Giriniz:" />
+      <Label layoutX="319.0" layoutY="109.0" text="SURPLUS">
+         <font>
+            <Font size="64.0" />
          </font>
       </Label>
-      <Label layoutX="624.0" layoutY="450.0" text="170420050 Yiğit Bayraktaroğlu" />
-      <Label layoutX="614.0" layoutY="468.0" text="171420008 Hamza Can Korkmaz" />
-      <PasswordField fx:id="pass" layoutX="287.0" layoutY="230.0" prefHeight="26.0" prefWidth="226.0" promptText="Şifre Giriniz:" />
-      <Label fx:id="feedback" layoutX="284.0" layoutY="269.0" prefHeight="18.0" prefWidth="226.0" textAlignment="CENTER" />
+      <Label layoutX="552.0" layoutY="514.0" text="170420050 Yiğit Bayraktaroğlu">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label layoutX="543.0" layoutY="550.0" text="171420008 Hamza Can Korkmaz">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <PasswordField fx:id="pass" layoutX="308.0" layoutY="275.0" prefHeight="35.0" prefWidth="281.0" promptText="Şifre Giriniz:" />
+      <Label fx:id="feedback" layoutX="309.0" layoutY="321.0" prefHeight="35.0" prefWidth="282.0" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
    </children>
 </AnchorPane>

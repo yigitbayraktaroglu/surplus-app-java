@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
@@ -19,17 +16,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static com.example.surplusapp.dbConn.Connect;
 
 public class mController implements Initializable  {
-    public  User currUser=new User();
+    public static User currUser=new User();
+    public playlist pl=new playlist(10,9,"test");
 
     ObservableList<song> observableList= FXCollections.observableArrayList();
     ObservableList<song> plSongobservableList= FXCollections.observableArrayList();
     ObservableList<playlist> playlistObservableList= FXCollections.observableArrayList();
+
     @FXML
     AnchorPane root;
     @FXML
@@ -45,7 +43,9 @@ public class mController implements Initializable  {
     @FXML
     Button yeniPlaylist;
     @FXML
-    public Button takipEtikllerin;
+    Button olustur;
+    @FXML
+    TextField playlistName;
 
     @FXML
     public TableView<song> plsongTableView=new TableView<>();
@@ -74,8 +74,10 @@ public class mController implements Initializable  {
     public TableColumn<song,String> lenCol=new TableColumn<>();
     @FXML
     public TableColumn<song,String>catCol=new TableColumn<>();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         adCol.setCellValueFactory(new PropertyValueFactory<>("songName"));
         artistCol.setCellValueFactory(new PropertyValueFactory<>("artistName"));
         lenCol.setCellValueFactory(new PropertyValueFactory<>("length"));
@@ -90,22 +92,27 @@ public class mController implements Initializable  {
 
         getallSongs();
         getUserPlaylist(currUser);
+
         songTableView.setItems(observableList);
-        playlistTableview.setItems(playlistObservableList);
+
         plsongTableView.setItems(plSongobservableList);
+
+        playlistTableview.setItems(playlistObservableList);
+
 
     }
 
-    public  void setUser(User user) {
+    public static void setUser(User user) {
         currUser.setUserID(user.getUserID());
         currUser.setUserMail(user.getUserMail());
         currUser.setUserName(user.getUserMail());
         currUser.setUserPass(user.getUserPass());
-        getUserPlaylist(user);
+
     }
 
     public void getallSongs(){
-        String sql = "SELECT songs.songID, artistName, categories.categoryName,songName,length FROM songs INNER JOIN categories ON songs.categoryID = categories.categoryID";
+        String sql = "SELECT songs.songID, artistName, categories.categoryName,songName,length " +
+                "FROM songs INNER JOIN categories ON songs.categoryID = categories.categoryID";
         try (Connection conn = Connect();
              PreparedStatement pstmt  = conn.prepareStatement(sql);
              ResultSet rs  = pstmt.executeQuery()){
@@ -122,7 +129,9 @@ public class mController implements Initializable  {
             e.printStackTrace();
         }
     }
+
     public void getUserPlaylist(User user){
+
         String id=Integer.toString(user.getUserID());
         String sql = "SELECT * FROM playlists WHERE userID="+id;
         try (Connection conn = Connect();
@@ -134,8 +143,6 @@ public class mController implements Initializable  {
                 playlist.setPlaylistID(rs.getInt("playlistID"));
                 playlist.setPlaylistName(rs.getString("playlistName"));
                 playlistObservableList.add(playlist);
-                System.out.println(playlistObservableList.get(0).getPlaylistName());
-                System.out.println(playlist.getPlaylistName());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -145,13 +152,13 @@ public class mController implements Initializable  {
 
     }
 
+
+
     public void getPlaylistSong(){
         plSongobservableList.clear();
-        //ObservableList<playlist> playlists;
-        //playlists=playlistTableview.getSelectionModel().getSelectedItems();
-        //int plid=playlists.get(0).getPlaylistID();
-        //devamı yazılacak.
-        int plid=1;
+        ObservableList<playlist> playlists;
+        playlists=playlistTableview.getSelectionModel().getSelectedItems();
+        int plid=playlists.get(0).getPlaylistID();
         plSarkıSayici(plid);
         String sql = "SELECT songs.songID,categories.categoryName,songs.songName,songs.length,songs.artistName FROM playlists RIGHT JOIN playlistsongs ON playlistsongs.playlistID=playlists.playlistID RIGHT JOIN songs ON songs.songID=playlistsongs.songID INNER JOIN categories ON categories.categoryID=songs.categoryID WHERE playlists.playlistID="+plid;
         try (Connection conn = Connect();
@@ -176,13 +183,12 @@ public class mController implements Initializable  {
 
 
     public void deletePlaylistSong(){
-       // ObservableList<playlist> playlists;
-        //playlists=playlistTableview.getSelectionModel().getSelectedItems();
+       ObservableList<playlist> playlists;
+        playlists=playlistTableview.getSelectionModel().getSelectedItems();
         ObservableList<song> song;
         song=plsongTableView.getSelectionModel().getSelectedItems();
-        //int plid=playlists.get(0).getPlaylistID();
+        int plid=playlists.get(0).getPlaylistID();
         int sid=song.get(0).getSongID();
-        int plid=1;
 
         String sql = "DELETE FROM playlistsongs where songID="+sid+" and playlistID="+plid;
         try (Connection conn = Connect();
@@ -198,10 +204,9 @@ public class mController implements Initializable  {
 
     public void sarkiEkle(){
         ObservableList<song> ekle;
-       // ObservableList<playlist> playlists;
-        //playlists=playlistTableview.getSelectionModel().getSelectedItems();
-        //int plid=playlists.get(0).getPlaylistID();
-        int plid=1;
+        ObservableList<playlist> playlists;
+        playlists=playlistTableview.getSelectionModel().getSelectedItems();
+        int plid=playlists.get(0).getPlaylistID();
         ekle=songTableView.getSelectionModel().getSelectedItems();
         int songID=ekle.get(0).getSongID();
         String sql = "INSERT INTO playlistsongs (playlistID,songID)" +
@@ -216,15 +221,34 @@ public class mController implements Initializable  {
         getPlaylistSong();
     }
 
+    public void newPlaylist(){
+        olustur.setVisible(true);
+        playlistName.setVisible(true);
+    }
 
+    public void createPlaylist(){
+        String plname=playlistName.getText();
 
+        String id=Integer.toString(currUser.getUserID());
 
+        String sql = "INSERT INTO playlists(userID,playlistName) VALUES("+id+",'"+plname+"')";
+        try (Connection conn = Connect();
+             PreparedStatement pstmt  = conn.prepareStatement(sql);
+        ){
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        olustur.setVisible(false);
+        playlistName.setVisible(false);
+
+    }
 
     public void plSarkıSayici(int plid){
         String songName=null;
         int sayi=0;
 
-        String sql = "SELECT playlistName,count(songID) as SarkıSayisi FROM surplus.playlistsongs INNER JOIN  playlists ON playlists.playlistID=playlistsongs.playlistID  group by playlistsongs.playlistID HAVING playlistsongs.playlistID="+plid;
+        String sql = "SELECT playlistName,count(songID) as SarkiSayisi FROM surplus.playlistsongs INNER JOIN  playlists ON playlists.playlistID=playlistsongs.playlistID  group by playlistsongs.playlistID HAVING playlistsongs.playlistID="+plid;
             try (Connection conn = Connect();
                  PreparedStatement pstmt  = conn.prepareStatement(sql);
                  ResultSet rs  = pstmt.executeQuery()){

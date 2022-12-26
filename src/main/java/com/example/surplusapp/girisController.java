@@ -18,7 +18,7 @@ import java.util.Objects;
 
 import static com.example.surplusapp.dbConn.Connect;
 
-public class girisController extends mController{
+public class girisController {
     @FXML
     private AnchorPane root;
     @FXML
@@ -56,9 +56,10 @@ public class girisController extends mController{
 
         }
         if(Objects.equals(user.getUserPass(), userPass)){
-            setUser(user);
+            mController.setUser(user);
             AnchorPane pane = FXMLLoader.load(getClass().getResource("main.fxml"));
             root.getChildren().setAll(pane);
+
 
         }else if(Objects.equals(userMail, "admin")&& Objects.equals(userPass, "admin")){
             AnchorPane pane = FXMLLoader.load(getClass().getResource("admin.fxml"));
